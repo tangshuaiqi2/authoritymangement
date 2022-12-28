@@ -49,7 +49,7 @@ public class SysRoleMapperTest {
 	@Test
 	public void add(){
 		SysRole sysRole = new SysRole();
-		sysRole.setRoleName("测试角色");
+		sysRole.setRoleName("测试角色2");
 		sysRole.setRoleCode("testaManger");
 		sysRole.setDescription("test");
 		int rows = sysRoleMapper.insert(sysRole);
