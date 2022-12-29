@@ -23,7 +23,13 @@ public class SysRoleController {
 	private SysRoleService sysRoleService;
 
 
-	@DeleteMapping("batchremove")
+	@GetMapping("/get/{id}")
+	public Result get(@PathVariable Long id) {
+		SysRole role = sysRoleService.getById(id);
+		return Result.ok(role);
+	}
+
+	@DeleteMapping("batchRemove")
 	public Result batchRemove(@RequestBody List<Long> ids){
 		boolean save = sysRoleService.removeByIds(ids);
 		if(save){
@@ -40,6 +46,8 @@ public class SysRoleController {
 		}
 		return Result.fail();
 	}
+
+
 
 
 	@PostMapping("findRoleById/{id}")
@@ -86,11 +94,6 @@ public class SysRoleController {
 	@ApiOperation("查询所有记录的接口")
 	@GetMapping("findAll")
 	public Result findAllRole(){
-		try{
-			int i = 9 / 0;
-		}catch(Exception e){
-			throw new GuiguException(200, "出现了自定义异常");
-		}
 
 		List<SysRole> list = sysRoleService.list();
 		return Result.ok(list);
